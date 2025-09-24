@@ -7,9 +7,10 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Droplets, AlertTriangle, CheckCircle, MapPin, Phone, Activity } from 'lucide-react';
+import { Droplets, AlertTriangle, CheckCircle, MapPin, Phone, Activity, Cpu } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import WaterSourceMap from './WaterSourceMap';
+import IoTSensorDashboard from './IoTSensorDashboard';
 
 interface WaterTest {
   id: string;
@@ -194,10 +195,14 @@ const WaterQualityDashboard = () => {
 
         {/* Main Content */}
         <Tabs defaultValue="dashboard" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="dashboard" className="flex items-center gap-2">
               <Activity className="h-4 w-4" />
               Dashboard
+            </TabsTrigger>
+            <TabsTrigger value="iot" className="flex items-center gap-2">
+              <Cpu className="h-4 w-4" />
+              IoT Sensors
             </TabsTrigger>
             <TabsTrigger value="map" className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
@@ -329,6 +334,10 @@ const WaterQualityDashboard = () => {
                 </CardContent>
               </Card>
             </div>
+          </TabsContent>
+
+          <TabsContent value="iot">
+            <IoTSensorDashboard />
           </TabsContent>
 
           <TabsContent value="map">
